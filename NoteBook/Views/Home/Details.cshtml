@@ -1,0 +1,32 @@
+﻿@model NoteBook.Models.Note
+@{
+    ViewBag.Title = "Посмотреть";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Ежедневник</title>
+</head>
+<body>
+
+    <h2>Ежедневник @Model.Day</h2>
+    <div>
+        <dl class="dl-horizontal">
+            <dt>Идентификатор</dt>
+            <dd>@Model.Id</dd>
+
+            <dt>День</dt>
+            <dd>@Model.Day</dd>
+
+            <dt>Задача</dt>
+            <dd>@Model.Task</dd>
+
+
+
+            <dt>Время</dt>
+            <dd>@Model.Time</dd>
+        </dl>
+    </div>
+</body>
+</html>

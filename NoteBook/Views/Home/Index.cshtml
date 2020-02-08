@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Note>
+@{
+    //ViewData["Title"] = "Ежедневник";
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Ежедневник</title>
+</head>
+<body>
+    <style>
+        p {
+            margin-top: 10px;
+        }
+    </style>
+    <p><hr /></p>
+    <a href="~/Home/Create" class="Create">Добавить</a>
+    <p><hr /></p>
+    
+    <form asp-controller="Home" asp-action="Index">
+        <p>
+            Search: <input type="text" name="SearchString">
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+
+
+    <h3>Ежедневник</h3>
+    <table>
+        <tr>
+            <td>День</td>
+            <td>Задача</td>
+            <td>Время</td>
+            <td></td>
+        </tr>
+        @foreach (var note in Model)
+        {
+            <tr>
+                <td>@note.Day</td>
+                <td>@note.Task</td>
+                <td>@note.Time</td>
+
+
+                <td><a asp-action="Edit" asp-controller="Home" asp-route-id="@note.Id">Редактировать</a></td>
+
+                <td><a asp-action="Delete" asp-controller="Home" asp-route-id="@note.Id">Удалить</a></td>
+
+                <td><a asp-action="Details" asp-controller="Home" asp-route-id="@note.Id">Информация</a></td>
+
+            </tr>
+        }
+    </table>
+
+
+
+</body>
+</html>
