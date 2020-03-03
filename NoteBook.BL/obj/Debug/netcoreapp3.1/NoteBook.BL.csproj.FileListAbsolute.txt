@@ -1,0 +1,13 @@
+D:\тестирую программы\Note\NoteBook.BL\bin\Debug\netcoreapp3.1\NoteBook.BL.deps.json
+D:\тестирую программы\Note\NoteBook.BL\bin\Debug\netcoreapp3.1\NoteBook.BL.dll
+D:\тестирую программы\Note\NoteBook.BL\bin\Debug\netcoreapp3.1\NoteBook.BL.pdb
+D:\тестирую программы\Note\NoteBook.BL\bin\Debug\netcoreapp3.1\NoteBook.Common.dll
+D:\тестирую программы\Note\NoteBook.BL\bin\Debug\netcoreapp3.1\NoteBook.DAL.dll
+D:\тестирую программы\Note\NoteBook.BL\bin\Debug\netcoreapp3.1\NoteBook.Common.pdb
+D:\тестирую программы\Note\NoteBook.BL\bin\Debug\netcoreapp3.1\NoteBook.DAL.pdb
+D:\тестирую программы\Note\NoteBook.BL\obj\Debug\netcoreapp3.1\NoteBook.BL.csprojAssemblyReference.cache
+D:\тестирую программы\Note\NoteBook.BL\obj\Debug\netcoreapp3.1\NoteBook.BL.AssemblyInfoInputs.cache
+D:\тестирую программы\Note\NoteBook.BL\obj\Debug\netcoreapp3.1\NoteBook.BL.AssemblyInfo.cs
+D:\тестирую программы\Note\NoteBook.BL\obj\Debug\netcoreapp3.1\NoteBook.BL.csproj.CopyComplete
+D:\тестирую программы\Note\NoteBook.BL\obj\Debug\netcoreapp3.1\NoteBook.BL.dll
+D:\тестирую программы\Note\NoteBook.BL\obj\Debug\netcoreapp3.1\NoteBook.BL.pdb

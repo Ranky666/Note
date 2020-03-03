@@ -30,17 +30,17 @@
     <h3>Ежедневник</h3>
     <table>
         <tr>
-            <td>День</td>
+          
             <td>Задача</td>
-            <td>Время</td>
+           
             <td></td>
         </tr>
         @foreach (var note in Model)
         {
             <tr>
-                <td>@note.Day</td>
+                
                 <td>@note.Task</td>
-                <td>@note.Time</td>
+                
 
 
                 <td><a asp-action="Edit" asp-controller="Home" asp-route-id="@note.Id">Редактировать</a></td>

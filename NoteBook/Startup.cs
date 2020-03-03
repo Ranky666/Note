@@ -10,6 +10,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore; // пространство имен EntityFramework
 using NoteBook.Models;
+using NoteBook.BL.Services;
+using NoteBook.BL.Interfaces;
+using NoteBook.DAL.Interfaces;
+using NoteBook.DAL.Repositories;
+using NoteBook.DAL.EF;
+using AutoMapper;
 
 namespace NoteBook
 {
@@ -27,6 +33,20 @@ namespace NoteBook
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<NoteContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
+            services.AddTransient<INoteService, NoteService>();
+            services.AddTransient<INoteRepository, NoteRepository>();
+            services.AddSingleton<Profile, NoteBook.Mapping.NoteProfile>();
+            services.AddSingleton<Profile, NoteBook.DAL.Mapping.NoteProfile>();
+            services.AddSingleton(x =>
+            {
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.AddProfiles(x.GetServices<Profile>());
+                });
+                config.AssertConfigurationIsValid();
+                return config.CreateMapper(x.GetService);
+            });
+
         }
 
         public void Configure(IApplicationBuilder app)

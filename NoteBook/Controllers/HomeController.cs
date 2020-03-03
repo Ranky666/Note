@@ -7,90 +7,90 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NoteBook.Models;
 using Microsoft.EntityFrameworkCore;
+using NoteBook.BL.Interfaces;
+using NoteBook.DAL.EF;
+using NoteBook.Common;
+using NUnit.Framework;
+using AutoMapper;
 
 namespace NoteBook.Controllers
 {
     public class HomeController : Controller
     {
-        NoteContext db;
-        public HomeController(NoteContext context)
+        private readonly INoteService _noteService;
+
+        private readonly IMapper _mapper;
+
+
+
+        public HomeController(INoteService noteService, IMapper mapper)
         {
-            db = context;
+            _noteService = noteService;
+            _mapper = mapper;
         }
+      
 
 
-        public async Task<IActionResult> Index(string searchString)
+        public IActionResult Index(string SearchString)
         {
-            var notes = from m in db.Notes
-                         select m;
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-               notes = notes.Where(s => s.Task.Contains(searchString));
-            }
+            return View(_mapper.Map<List<Note>>(_noteService.GetNotes(SearchString)));
 
-            return View(await notes.ToListAsync());
+
         }
 
 
         public IActionResult Create()
-        {
+        { 
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Note note)
+        public IActionResult Create(Note noteDTO)
         {
 
-            db.Notes.Add(note);
-            await db.SaveChangesAsync();
+            _noteService.CreateNote(new NoteDTO(){ Task = noteDTO.Task });
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Edit(int? id)
+     
+
+        public IActionResult Edit(int id)
         {
-            if (id != null)
-            {
-                Note note = await db.Notes.FirstOrDefaultAsync(p => p.Id == id);
-                if (note != null)
-                    return View(note);
-            }
-            return NotFound();
+            var editedNote = _noteService.GetNote(id);
+            return View(_mapper.Map(editedNote, new Note()));
         }
+
         [HttpPost]
-        public async Task<IActionResult> Edit(Note note)
+        public IActionResult Edit(Note model)
         {
-            db.Notes.Update(note);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+
+            _noteService.EditNote(_mapper.Map(model, new NoteDTO()));
+
+            return RedirectToAction("Index"); 
         }
+
+
 
         [HttpGet]
         [ActionName("Delete")]
-        public async Task<IActionResult> ConfirmDelete(int? id)
+        public  IActionResult Delete(int id)
         {
             if (id != null)
             {
-                Note note = await db.Notes.FirstOrDefaultAsync(p => p.Id == id);
-                if (note != null)
-                    db.Notes.Remove(note);
-                await db.SaveChangesAsync();
+                _noteService.DeleteNote(id);
                 return RedirectToAction("Index");
-
             }
+
             return NotFound();
         }
 
 
 
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int id)
         {
-            if (id != null)
-            {
-                Note note = await db.Notes.FirstOrDefaultAsync(p => p.Id == id);
-                if (note != null)
-                    return View(note);
-            }
-            return NotFound();
+            var detailedNote = _noteService.GetNote(id);
+            return View(_mapper.Map(detailedNote, new Note()));
+           
         }
 
     }
