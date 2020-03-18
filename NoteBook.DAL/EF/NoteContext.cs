@@ -8,6 +8,9 @@ namespace NoteBook.DAL.EF
 {
     public class NoteContext : DbContext
     {
+
+       
+
         public DbSet<Note> Notes { get; set; }
 
 
@@ -16,6 +19,9 @@ namespace NoteBook.DAL.EF
         {
             Database.EnsureCreated();
         }
+
+
+      
 
     }
 }

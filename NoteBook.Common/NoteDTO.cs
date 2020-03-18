@@ -6,9 +6,11 @@ namespace NoteBook.Common
 {
     public class NoteDTO
     {
+        
+
         public int Id { get; set; }
         
         public string Task { get; set; }
-      
+       
     }
 }

@@ -14,7 +14,7 @@ namespace NoteBook.DAL.Repositories
    public class NoteRepository : INoteRepository
     {
         private readonly NoteContext db;
-   //     private readonly NoteContext _context;
+  
         private readonly IMapper _mapper;
 
 

@@ -9,10 +9,12 @@ namespace NoteBook.DAL.Interfaces
     {
         List<NoteDTO> GetNotes();
         void CreateNote(NoteDTO noteDto);
-        void EditNote(NoteDTO noteDto);
+
+        void EditNote(NoteDTO dto);
 
         void DeleteNote(int id);
+
         NoteDTO FindNote(int id);
-        
+       
     }
 }

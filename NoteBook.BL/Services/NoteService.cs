@@ -11,6 +11,7 @@ namespace NoteBook.BL.Services
     public  class NoteService : INoteService
     {
         private readonly INoteRepository _noteRepository;
+        private IEnumerable<char> reversed;
 
         public NoteService(INoteRepository noteRepository)
         {
@@ -53,6 +54,28 @@ namespace NoteBook.BL.Services
 
           
         }
+
+        public void DuplicateNote(NoteDTO dto)
+        {
+            _noteRepository.CreateNote(dto);
+        }
+
+        public void DuplicateNoteThree(NoteDTO dto)
+        {
+
+            for (int i = 1; i <= 2; i++)
+            {
+                _noteRepository.CreateNote(dto);
+
+            }
+
+           
+
+        }
+
+
+
+
     }
 
     

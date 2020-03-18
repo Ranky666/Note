@@ -17,7 +17,9 @@ namespace NoteBook.BL.Interfaces
         void DeleteNote(int id);
 
         NoteDTO GetNote(int id);
-        
 
+        void DuplicateNote(NoteDTO dto);
+        void DuplicateNoteThree(NoteDTO dto);
+       
     }
 }

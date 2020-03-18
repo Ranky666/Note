@@ -16,6 +16,7 @@ using NoteBook.DAL.Interfaces;
 using NoteBook.DAL.Repositories;
 using NoteBook.DAL.EF;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace NoteBook
 {
@@ -46,6 +47,14 @@ namespace NoteBook
                 config.AssertConfigurationIsValid();
                 return config.CreateMapper(x.GetService);
             });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => //CookieAuthenticationOptions
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                });
+            services.AddControllersWithViews();
+
 
         }
 

@@ -12,6 +12,7 @@ using NoteBook.DAL.EF;
 using NoteBook.Common;
 using NUnit.Framework;
 using AutoMapper;
+using System.Text;
 
 namespace NoteBook.Controllers
 {
@@ -92,6 +93,33 @@ namespace NoteBook.Controllers
             return View(_mapper.Map(detailedNote, new Note()));
            
         }
+
+        public IActionResult Duplicate(string task)
+        {
+            _noteService.CreateNote(new NoteDTO() { Task = task });
+            return RedirectToAction("Index");
+        }
+
+
+        public IActionResult DuplicateThree(string task)
+        {
+
+            for (int i = 1; i <= 2; i++)
+            {
+                _noteService.CreateNote(new NoteDTO() { Task = task });
+               
+ 
+                
+            }
+
+            
+            return RedirectToAction("Index");
+
+        }
+
+     
+
+
 
     }
 }
