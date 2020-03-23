@@ -9,9 +9,10 @@ namespace NoteBook.DAL.EF
     public class NoteContext : DbContext
     {
 
-       
-
         public DbSet<Note> Notes { get; set; }
+
+
+        public DbSet<User> Users { get; set; }
 
 
         public NoteContext(DbContextOptions<NoteContext> options)

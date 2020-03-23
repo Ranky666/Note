@@ -38,6 +38,8 @@ namespace NoteBook
             services.AddTransient<INoteRepository, NoteRepository>();
             services.AddSingleton<Profile, NoteBook.Mapping.NoteProfile>();
             services.AddSingleton<Profile, NoteBook.DAL.Mapping.NoteProfile>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IUserRepository, UserRepository>();
             services.AddSingleton(x =>
             {
                 var config = new MapperConfiguration(cfg =>

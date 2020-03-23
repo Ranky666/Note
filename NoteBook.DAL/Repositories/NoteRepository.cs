@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 
 namespace NoteBook.DAL.Repositories
-{
+{ 
 
    public class NoteRepository : INoteRepository
     {
@@ -66,8 +66,6 @@ namespace NoteBook.DAL.Repositories
                 return new NoteDTO() { Task = noteEntity.Task };
             return null;
         }
-
-
 
       
     }

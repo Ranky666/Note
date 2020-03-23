@@ -107,19 +107,16 @@ namespace NoteBook.Controllers
             for (int i = 1; i <= 2; i++)
             {
                 _noteService.CreateNote(new NoteDTO() { Task = task });
-               
- 
-                
             }
-
-            
+            _noteService.CreateNote(new NoteDTO() { Task= Reverse(task)  } );
             return RedirectToAction("Index");
-
         }
-
-     
-
-
+        public static string Reverse(string s)
+        {
+            var charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
+        } 
 
     }
 }
