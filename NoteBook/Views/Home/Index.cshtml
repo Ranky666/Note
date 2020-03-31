@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Note>
 @{
-    //ViewData["Title"] = "Ежедневник";
-    Layout = null;
+    ViewData["Title"] = "Ежедневник";
+ //   Layout = null;
 }
 <!DOCTYPE html>
 
@@ -15,45 +15,56 @@
             margin-top: 10px;
         }
     </style>
-    <p><hr /></p>
-    <a href="~/Home/Create" class="Create">Добавить</a>
-    <p><hr /></p>
-    
+
+
+    <p></p>
+    <a href="~/Home/Create" class=btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+    <p></p>
+
     <form asp-controller="Home" asp-action="Index">
-        <p>
-            Search: <input type="text" name="SearchString">
-            <input type="submit" value="Filter" />
-        </p>
+    </form>
+    <form class="col s6">
+        <div class="row">
+            <div class="input-field col s6">
+                <input type="text" name="SearchString" type="submit"  class="waves-effect waves-light btn-small" />  <i class="material-icons">search</i>
+                
+                <label for="Search">Искать</label>
+
+
+            </div>
+        </div>
     </form>
 
 
-    <h3>Ежедневник</h3>
-    <table>
-        <tr>
-            <td>День</td>
-            <td>Задача</td>
-            <td>Время</td>
-            <td></td>
-        </tr>
+
+    <table class="striped">
+
+
+        <h5>Задача</h5>
+
+
         @foreach (var note in Model)
         {
-            <tr>
-                <td>@note.Day</td>
-                <td>@note.Task</td>
-                <td>@note.Time</td>
+    <tr>
+
+        <td>@note.Task</td>
+
+        <td><a asp-action="Edit" asp-controller="Home" asp-route-id="@note.Id"><i class="material-icons">create</i></a></td>
+
+        <td><a asp-action="Delete" asp-controller="Home" asp-route-id="@note.Id"><i class="material-icons">delete</i></a></td>
+
+        <td><a asp-action="Details" asp-controller="Home" asp-route-id="@note.Id"><i class="material-icons">info</i></a></td>
+
+        <td><a asp-action="Duplicate" asp-controller="Home" asp-route-task="@note.Task"><i class="material-icons">content_copy</i></a></td>
 
 
-                <td><a asp-action="Edit" asp-controller="Home" asp-route-id="@note.Id">Редактировать</a></td>
+        <td><a asp-action="DuplicateThree" asp-controller="Home" asp-route-task="@note.Task"><i class="material-icons">add_to_queue</i></a></td>
 
-                <td><a asp-action="Delete" asp-controller="Home" asp-route-id="@note.Id">Удалить</a></td>
+    </tr>
 
-                <td><a asp-action="Details" asp-controller="Home" asp-route-id="@note.Id">Информация</a></td>
-
-            </tr>
         }
+
     </table>
-
-
 
 </body>
 </html>

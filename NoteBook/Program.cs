@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NoteBook.Models;
 using Microsoft.Extensions.DependencyInjection;
+using NoteBook.DAL.EF;
 
 namespace NoteBook
 {
@@ -15,6 +16,7 @@ namespace NoteBook
     {
         public static void Main(string[] args)
         {
+
             var host = CreateHostBuilder(args).Build();
             using (var scope = host.Services.CreateScope())
             {
@@ -23,7 +25,7 @@ namespace NoteBook
                 try
                 {
                     var context = services.GetRequiredService<NoteContext>();
-                    SampleData.Initialize(context);
+                   
                 }
                 catch (Exception ex)
                 {
@@ -32,6 +34,9 @@ namespace NoteBook
                 }
             }
             host.Run();
+
+
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

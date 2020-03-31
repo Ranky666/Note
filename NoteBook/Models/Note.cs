@@ -8,8 +8,7 @@ namespace NoteBook.Models
     public class Note
     {
         public int Id { get; set; }
-        public string Day { get; set; }
         public string Task { get; set; }
-        public int Time { get; set; }
+      
     }
 }

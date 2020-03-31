@@ -3,3 +3,14 @@
 ################################################################################
 
 /.vs/NoteBook/v16/Server/sqlite3/db.lock
+/.vs/NoteBook/v16/Server/sqlite3
+/NoteBook/bin/Debug/netcoreapp3.1
+/NoteBook/obj
+/NoteBook.BL/bin
+/NoteBook.BL/obj
+/NoteBook.DAL/bin
+/NoteBook.DAL/obj
+/.vs
+/NoteBook.Common/obj
+/NoteBook.Common/bin
+
