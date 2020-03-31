@@ -18,7 +18,7 @@ namespace NoteBook.DAL.EF
         public NoteContext(DbContextOptions<NoteContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
+          
         }
 
 
