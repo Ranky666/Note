@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using NoteBook.DAL.Entities;
 using NoteBook.DAL.EF;
 using Microsoft.ApplicationInsights.Extensibility.Implementation;
+using NoteBook.BL.Interfaces;
 
 namespace NoteBook.Controllers
 {
@@ -21,6 +22,8 @@ namespace NoteBook.Controllers
     {
 
         private NoteContext db;
+      
+
         public AccountController(NoteContext context)
         {
             db = context;
@@ -36,7 +39,7 @@ namespace NoteBook.Controllers
         {
             if (ModelState.IsValid)
             {
-               User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
                 if (user != null)
                 {
                     await Authenticate(model.Email); // аутентификация

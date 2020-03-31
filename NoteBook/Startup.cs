@@ -60,13 +60,19 @@ namespace NoteBook
 
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, NoteContext context)
         {
+            context.Database.EnsureCreated();
+           
             app.UseDeveloperExceptionPage();
 
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();    // аутентификация
+            app.UseAuthorization();     // авторизация
+
 
             app.UseEndpoints(endpoints =>
             {

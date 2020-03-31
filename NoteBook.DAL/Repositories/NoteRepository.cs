@@ -19,7 +19,7 @@ namespace NoteBook.DAL.Repositories
 
 
         public NoteRepository(NoteContext context, IMapper mapper)
-        {
+        { 
             db = context;
             _mapper = mapper;
         }

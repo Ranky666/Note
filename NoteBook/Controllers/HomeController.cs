@@ -13,9 +13,11 @@ using NoteBook.Common;
 using NUnit.Framework;
 using AutoMapper;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NoteBook.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly INoteService _noteService;
@@ -31,7 +33,7 @@ namespace NoteBook.Controllers
         }
       
 
-
+     //   [AllowAnonymous]
         public IActionResult Index(string SearchString)
         {
 

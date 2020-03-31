@@ -7,10 +7,13 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using System.Threading.Tasks;
+using NoteBook.Common;
+using System.Web.Mvc;
 
 namespace NoteBook.DAL.Repositories
 {
-  public  class UserRepository : IUserRepository
+    public class UserRepository : IUserRepository
     {
 
 
@@ -25,10 +28,31 @@ namespace NoteBook.DAL.Repositories
             _mapper = mapper;
         }
 
+    
+
+        public void Login(UserDTO model)
+        {
+           
+            db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+             
+        }
 
 
+        public void Register(UserDTO model)
+        {
 
+            db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
 
+        }    
 
+        public void Authenticate(string userName)
+        {
+        
+        }
+
+        public void Logout()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
