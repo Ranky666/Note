@@ -1,0 +1,11 @@
+D:\тестирую программы\Note\NoteBook.DAL\bin\Debug\netcoreapp3.1\NoteBook.DAL.deps.json
+D:\тестирую программы\Note\NoteBook.DAL\bin\Debug\netcoreapp3.1\NoteBook.DAL.dll
+D:\тестирую программы\Note\NoteBook.DAL\obj\Debug\netcoreapp3.1\NoteBook.DAL.csprojAssemblyReference.cache
+D:\тестирую программы\Note\NoteBook.DAL\obj\Debug\netcoreapp3.1\NoteBook.DAL.AssemblyInfoInputs.cache
+D:\тестирую программы\Note\NoteBook.DAL\obj\Debug\netcoreapp3.1\NoteBook.DAL.AssemblyInfo.cs
+D:\тестирую программы\Note\NoteBook.DAL\bin\Debug\netcoreapp3.1\NoteBook.DAL.pdb
+D:\тестирую программы\Note\NoteBook.DAL\bin\Debug\netcoreapp3.1\NoteBook.Common.dll
+D:\тестирую программы\Note\NoteBook.DAL\bin\Debug\netcoreapp3.1\NoteBook.Common.pdb
+D:\тестирую программы\Note\NoteBook.DAL\obj\Debug\netcoreapp3.1\NoteBook.DAL.csproj.CopyComplete
+D:\тестирую программы\Note\NoteBook.DAL\obj\Debug\netcoreapp3.1\NoteBook.DAL.dll
+D:\тестирую программы\Note\NoteBook.DAL\obj\Debug\netcoreapp3.1\NoteBook.DAL.pdb
