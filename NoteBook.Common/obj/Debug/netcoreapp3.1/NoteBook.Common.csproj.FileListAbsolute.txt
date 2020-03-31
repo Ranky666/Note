@@ -1,0 +1,8 @@
+D:\тестирую программы\Note\NoteBook.Common\bin\Debug\netcoreapp3.1\NoteBook.Common.deps.json
+D:\тестирую программы\Note\NoteBook.Common\bin\Debug\netcoreapp3.1\NoteBook.Common.dll
+D:\тестирую программы\Note\NoteBook.Common\bin\Debug\netcoreapp3.1\NoteBook.Common.pdb
+D:\тестирую программы\Note\NoteBook.Common\obj\Debug\netcoreapp3.1\NoteBook.Common.AssemblyInfoInputs.cache
+D:\тестирую программы\Note\NoteBook.Common\obj\Debug\netcoreapp3.1\NoteBook.Common.AssemblyInfo.cs
+D:\тестирую программы\Note\NoteBook.Common\obj\Debug\netcoreapp3.1\NoteBook.Common.dll
+D:\тестирую программы\Note\NoteBook.Common\obj\Debug\netcoreapp3.1\NoteBook.Common.pdb
+D:\тестирую программы\Note\NoteBook.Common\obj\Debug\netcoreapp3.1\NoteBook.Common.csprojAssemblyReference.cache
