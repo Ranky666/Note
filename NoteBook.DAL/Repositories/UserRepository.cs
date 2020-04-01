@@ -1,15 +1,9 @@
-﻿using NoteBook.DAL.EF;
-using NoteBook.DAL.Interfaces;
+﻿using AutoMapper;
+using NoteBook.Common;
+using NoteBook.DAL.EF;
 using NoteBook.DAL.Entities;
 using NoteBook.DAL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
-using AutoMapper;
-using System.Threading.Tasks;
-using NoteBook.Common;
-using System.Web.Mvc;
+using System.Linq;
 
 namespace NoteBook.DAL.Repositories
 {
@@ -28,31 +22,21 @@ namespace NoteBook.DAL.Repositories
             _mapper = mapper;
         }
 
-    
-
-        public void Login(UserDTO model)
+        public  UserDTO FindUser(UserDTO dto)
         {
-           
-            db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
-             
+            return  _mapper.Map<UserDTO>( db.Users.FirstOrDefault(u => u.Email == dto.Email && u.Password == dto.Password));
         }
 
-
-        public void Register(UserDTO model)
+        public UserDTO FindUserByEmail(UserDTO dto)
         {
-
-            db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
-
-        }    
-
-        public void Authenticate(string userName)
-        {
-        
+            return _mapper.Map<UserDTO>(db.Users.FirstOrDefault(u => u.Email == dto.Email));
         }
 
-        public void Logout()
+        public void AddUser(UserDTO dto)
         {
-            throw new NotImplementedException();
+            db.Users.Add(_mapper.Map<User>(dto));
+            db.SaveChanges();
         }
+
     }
 }

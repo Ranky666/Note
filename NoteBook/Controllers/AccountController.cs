@@ -1,32 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using NoteBook.ViewModels; // пространство имен моделей RegisterModel и LoginModel
-using NoteBook.Models; // пространство имен UserContext и класса User
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using NoteBook.DAL.Entities;
-using NoteBook.DAL.EF;
-using Microsoft.ApplicationInsights.Extensibility.Implementation;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NoteBook.BL.Interfaces;
+using NoteBook.Common;
+using NoteBook.DAL.EF;
+using NoteBook.DAL.Entities;
+using NoteBook.ViewModels;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace NoteBook.Controllers
 {
     public class AccountController : Controller
     {
 
-        private NoteContext db;
+       
+        private readonly IAuthorizationService _authorizationService;
       
+        
 
-        public AccountController(NoteContext context)
+        public AccountController( IAuthorizationService authorizationService)
         {
-            db = context;
+            
+            _authorizationService = authorizationService;
+
+
         }
         [HttpGet]
         public IActionResult Login()
@@ -39,10 +39,11 @@ namespace NoteBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+                UserDTO user = _authorizationService.FindUser(new UserDTO { Email = model.Email});
+
                 if (user != null)
                 {
-                    await Authenticate(model.Email); // аутентификация
+                    await Authenticate(model.Email); 
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -62,14 +63,13 @@ namespace NoteBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+                UserDTO user = _authorizationService.FindUserByEmail(new UserDTO { Email = model.Email, Password = model.Password });
                 if (user == null)
                 {
-                    // добавляем пользователя в бд
-                    db.Users.Add(new User { Email = model.Email, Password = model.Password });
-                    await db.SaveChangesAsync();
 
-                    await Authenticate(model.Email); // аутентификация
+                    _authorizationService.AddUser(new UserDTO { Email = model.Email, Password = model.Password });
+
+                    await Authenticate(model.Email);
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -81,14 +81,14 @@ namespace NoteBook.Controllers
 
         private async Task Authenticate(string userName)
         {
-            // создаем один claim
+           
             var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
             };
-            // создаем объект ClaimsIdentity
+            
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-            // установка аутентификационных куки
+           
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
 

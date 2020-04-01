@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 using NoteBook.Common;
 
-namespace NoteBook.DAL.Interfaces
+namespace NoteBook.BL.Interfaces
 {
-    public interface IUserRepository
+    public interface IAuthorizationService
     {
+
         UserDTO FindUser(UserDTO dto);
 
         UserDTO FindUserByEmail(UserDTO dto);
 
         void AddUser(UserDTO dto);
-
 
     }
 }
